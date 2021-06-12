@@ -11,7 +11,6 @@ class Multimedia {
         return `Este método es para realizar un cambio en la URL del video`
     }
 }
-
 class Reproductor extends Multimedia {
     constructor(url, id) {
         super(url);
@@ -25,20 +24,13 @@ class Reproductor extends Multimedia {
             function(elem) {
                 elem.parentNode.removeChild(elem);
             });
-
-
-        //Media.mostrar(this.getUrl(), this.getId());
     }
     setInicio = (tiempo) => {
         if (tiempo != '') {
-            // console.log(tiempo)
-            // console.log(`${this.getUrl()}?start=${tiempo}`)
-            // return `${this.getUrl()}?start=${tiempo}`
             const direccion = 'https://www.youtube.com/embed/'
             Media.mostrar(`${direccion}${this.getUrl()}?start=${tiempo}`, this.getId())
         } else {
-            // console.log(`${this.getUrl()}`)
-            // return `${this.getUrl()}`
+
             Media.mostrar(`https://www.youtube.com/embed/${this.getUrl()}`, this.getId())
         }
 
@@ -51,11 +43,12 @@ const Media = (() => {
     const agregarVideo = (url, id) => {
         let ifrm = document.createElement('iframe');
         elem = document.getElementById(id);
-        //console.log(elem)
+        const ancho = 580;
+        const alto = 315;
         elem.appendChild(ifrm);
         ifrm.setAttribute('src', url);
-        ifrm.setAttribute('width', 580);
-        ifrm.setAttribute('height', 315);
+        ifrm.setAttribute('width', ancho);
+        ifrm.setAttribute('height', alto);
     }
 
     return {
